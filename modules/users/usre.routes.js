@@ -1,32 +1,26 @@
-// requires of the API
-const router=require('express').Router();
-const deleteuser = require('./controller/delete.contol');
-const getcondiation = require('./controller/getcondition.controller');
-const getConditionfirstletter = require('./controller/getConditionfirstletter.controller');
-const getConditionLastletter = require('./controller/getConditionLastletter.controller');
-const getLastOne = require('./controller/getLastOne.controller');
-const getreversed = require('./controller/getreversed.controller');
-const getuserbyid = require('./controller/getuserbyid.controller');
-const getallusers = require('./controller/getusers.controller');
-const searchByName = require('./controller/searchByName.controller');
-const signin = require('./controller/signin.controller');
-const adduser = require('./controller/signup.controll');
-const updatauser = require('./controller/updatauser.contol');
+const { searchUserAge_name } = require('./controller/searchUserAge');
+const { addnewuser, upDataUser, getalluser, deleteuser } = require('./controller/user.controllerofCRUD');
+const { GetAllUserReversed } = require('./controller/user.GetAllUserReversed');
+const { getuserbyid } = require('./controller/user.getuserbyid');
+const { searchbyname } = require('./controller/user.searchbyname');
+const { searchbyage } = require('./controller/user.searchUserAge ');
 
-// all the objectives of the API
-router.get('/getallusers',getallusers)
-router.get('/getuserbyid/:id',getuserbyid)
-router.get('/searchByName',searchByName)
-router.get('/getreversed',getreversed)
-router.get('/getConditionAge',getcondiation)
-router.get('/getConditionfirstletter',getConditionfirstletter)
-router.get('/getConditionLastletter',getConditionLastletter)
-router.get('/getLastOne',getLastOne)
-router.post('/adduser',adduser)
-router.post('/signin',signin)
-router.delete('/delete/:id',deleteuser)
-router.put('/updata/:id',updatauser)
+const userRoute=require('express').Router();
+
+UserRouter.post('/addnewuser',addnewuser)
+UserRouter.put('/updatauser/:id',upDataUser)
 
 
 
-module.exports=router
+UserRouter.get('/getuserbyid/:id',getuserbyid)
+UserRouter.get('/getallusers',getalluser)
+UserRouter.get('/searchbyname',searchbyname)
+UserRouter.get('/GetAllUserReversed',GetAllUserReversed)
+UserRouter.get('/searchUserAge',searchbyage)
+UserRouter.get('/searchUserAge&name',searchUserAge_name)
+UserRouter.get('/searchUserAge&name2',searchUserAge_name2)
+
+
+UserRouter.delete('/deleteuser/:id',deleteuser)
+
+module.exports=userRoute

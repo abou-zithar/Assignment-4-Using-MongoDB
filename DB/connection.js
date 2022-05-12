@@ -1,11 +1,14 @@
-const mysql2=require('mysql2')
+const mongoose = require('mongoose')
 
 
-const mySql=mysql2.createConnection({
-    host:'localhost',
-    user:'root',
-    database:'users',
-    password:''
-})
+const create_connection=()=>{
+   return mongoose.connect("mongodb://localhost:27017/MyDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+  })
+    .then((result)=>console.log('connected.....'))
+    .catch(err=>console.log(err));
 
-module.exports = mySql
+}
+
+module.exports= create_connection;

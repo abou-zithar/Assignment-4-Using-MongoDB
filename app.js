@@ -1,13 +1,12 @@
 const express=require('express');
-const routeuser = require('./modules/users/usre.routes');
-const blogrouter = require('./modules/blogs/blogs.routes');
+const create_connection  =require('./DB/connection')
+
 
 const app= express()
 app.use(express.json())
-const port=3000
-app.use(routeuser)
-app.use(blogrouter)
+create_connection();
 
+port=27017
 
 app.get('/',(req,res)=>{
     res.send('hi')
@@ -15,6 +14,8 @@ app.get('/',(req,res)=>{
 
 app.listen(port,()=>{
     console.log('running...');
+   
+    
 })
 
 
